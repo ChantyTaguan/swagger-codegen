@@ -51,6 +51,7 @@ case class Model(
   qualifiedType: String,
   var properties: LinkedHashMap[String, ModelProperty],
   description: Option[String] = None,
+  `extends`: Option[String] = None,
   baseModel: Option[String] = None,
   discriminator: Option[String] = None)
 

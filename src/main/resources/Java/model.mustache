@@ -4,7 +4,7 @@ package {{package}};
 {{/imports}}
 {{#models}}
 {{#model}}
-public class {{classname}} {
+public class {{classname}} {{#extends}} {{{extends}}} {{/extends}} {
   {{#vars}}
 
   {{#description}}/* {{{description}}} */

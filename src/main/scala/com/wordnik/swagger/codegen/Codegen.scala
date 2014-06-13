@@ -442,10 +442,15 @@ class Codegen(config: CodegenConfig) {
     config.processApiMap(properties.toMap)
   }
 
+  def setExtends(parent: Option[String], modelPackage: Option[String]): Option[String] = {
+    if (parent.isEmpty) None else Some(modelPackage.getOrElse("") + parent.getOrElse("").substring(parent.getOrElse("").lastIndexOf(".")))
+  }
+
   def modelToMap(className: String, model: Model): Map[String, AnyRef] = {
     val data: HashMap[String, AnyRef] =
       HashMap(
         "classname" -> config.toModelName(className),
+        "extends" -> setExtends(model.`extends`, config.modelPackage),
         "classVarName" -> config.toVarName(className), // suggested name of object created from this class
         "modelPackage" -> config.modelPackage,
         "description" -> model.description,
