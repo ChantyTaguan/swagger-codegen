@@ -478,8 +478,7 @@ object SwaggerSerializers {
         (json \ "name").extractOrElse(""),
         (json \ "qualifiedType").extractOrElse((json \ "id").extractOrElse("")),
         output,
-        (json \ "description").extractOpt[String],
-        (json \ "extends").extractOpt[String]
+        (json \ "description").extractOpt[String]
       )
     }, {
     case x: Model =>
